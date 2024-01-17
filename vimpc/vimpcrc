@@ -1,0 +1,16 @@
+"Set default window
+set window library
+set windows lists,library,browse,playlist
+"Colors
+hi tab default  white
+hi current default bold_magenta
+hi id default magenta 
+hi status default white 
+hi song default white
+hi progress default magenta
+hi partial default magenta
+hi full default magenta
+hi pager default magenta
+hi match white black 
+ 
+

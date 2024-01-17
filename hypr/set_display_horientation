@@ -1,0 +1,13 @@
+#!/bin/bash
+
+flag_file="~/flag_display.txt"
+
+if [ -f "$flag_file"]; then
+    flag = $(cat "$flag_file")
+    if [ "$flag" = "true"]; then
+        hyprctl keyword monitor "eDP-1,1920x1080@60,0X0,auto"
+    else
+        hyprctl keyword monitor "eDP-1,1920x1080@60,1920x740,auto, transform, 2" 
+    fi
+else
+    echo "false" > "$flag_file"

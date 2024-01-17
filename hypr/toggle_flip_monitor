@@ -1,0 +1,35 @@
+#!/bin/bash
+
+# Nombre del archivo donde se almacenará/lee la variable de flag
+flag_file="flag_display.txt"
+
+# Comprobar si el archivo de flag existe
+if [ -f "$flag_file" ]; then
+    # Leer la variable de flag del archivo
+    flag=$(cat "$flag_file")
+    # echo "El valor actual del flag es: $flag"
+    
+    # Toggle del valor del flag
+    if [ "$flag" = "true" ]; then
+        new_flag="false"
+    else
+        new_flag="true"
+    fi
+    
+    # echo "Cambiando el valor del flag a: $new_flag"
+    echo "$new_flag" > "$flag_file"
+else
+    # Crear el archivo de flag y establecer el valor por defecto
+    echo "false" > "$flag_file"
+    flag=false
+    # echo "Se ha creado el archivo de flag con el valor por defecto 'false'"
+fi
+
+# Aquí puedes realizar acciones basadas en el valor del flag
+if [ "$flag" = true ]; then
+   hyprctl keyword monitor "eDP-1,1920x1080@60,1920x740,auto, transform, 2"
+   hyprctl keyword input:touchdevice:transform 2
+else
+   hyprctl keyword monitor "eDP-1,1920x1080@60,0X0,auto"
+   hyprctl keyword input:touchdevice:transform 0 
+fi
